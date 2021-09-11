@@ -1,0 +1,85 @@
+import java.util.Scanner;
+
+public class Main {
+
+    int acc_no;
+    String name;
+    float Balance;
+
+    void insert(int a , String b, float c){
+        acc_no = a;
+        name =  b;
+        Balance =  c;
+    }
+
+
+
+    void deposit(){
+        System.out.println("Enter the amount to be deposited");
+        Scanner sc1 = new Scanner(System.in);
+        float bal = sc1.nextFloat();
+        Balance = Balance + bal;
+        System.out.println("You deposited " + bal + "in your account");
+
+    }
+    void withdraw() {
+            System.out.println("Enter the amount you want to withdraw");
+            Scanner Sc1 = new Scanner(System.in);
+            float bal = Sc1.nextFloat();
+
+            if (Balance < bal) {
+                System.out.println("Insufficient Balance");
+
+            } else {
+                Balance = Balance - bal;
+                System.out.println("You have withdrawed " + bal + "from your Account");
+            }
+
+        }
+
+    void show_details(){
+        System.out.println("Your account number is " + acc_no + "   Your name is  " + name + "   Your account balance is " + Balance);
+    }
+    void balance(){
+        System.out.println("Your Account balance is " + Balance);
+    }
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter you Account No:-");
+        int acc_no = sc.nextInt();
+        sc.nextLine();
+        System.out.println("Enter your Name:-");
+        String Name = sc.nextLine();
+
+        Main c1 = new Main();
+        c1.insert(acc_no , Name , 10000 );
+        System.out.println("Please Enter your Choice :-  1. Press 1 for Deposit /n 2. Press 2 for Withdraw /n 3. Press 3 for show Balance " );
+
+       int  Menu = sc.nextInt();
+       switch (Menu){
+           case 1: {
+               c1.deposit();
+               break;
+           }
+           case 2: {
+               c1.withdraw();
+               break;
+           }
+           case 3: {
+               c1.show_details();
+               break;
+           }
+           default: {
+               System.out.println("Please choose valid number");
+           }
+       }
+       c1.balance();
+
+
+
+
+
+
+    }
+}
